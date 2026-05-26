@@ -1,0 +1,182 @@
+@import 'tailwindcss';
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+@source '../**/*.blade.php';
+@source '../**/*.js';
+
+@theme {
+    --font-sans: 'Outfit', 'Poppins', ui-sans-serif, system-ui, sans-serif;
+}
+
+/* Custom CSS Styles */
+
+/* Subtle Grid Background (Optimized: split into static fixed container to prevent paint-on-scroll lag) */
+body {
+    background-color: #0b0f19;
+}
+
+#bg-grid {
+    background-image: 
+        radial-gradient(circle at 50% 50%, rgba(11, 15, 25, 0.9) 0%, #0b0f19 100%),
+        linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+    background-size: 100% 100%, 40px 40px, 40px 40px;
+}
+
+/* Custom Cursor (GPU Optimized using will-change and translate3d) */
+.custom-cursor-dot {
+    width: 8px;
+    height: 8px;
+    background-color: #22d3ee; /* cyan-400 */
+    position: fixed;
+    top: 0;
+    left: 0;
+    border-radius: 50%;
+    z-index: 9999;
+    pointer-events: none;
+    will-change: transform;
+}
+
+.custom-cursor-outline {
+    width: 40px;
+    height: 40px;
+    border: 1.5px solid rgba(34, 211, 238, 0.4);
+    position: fixed;
+    top: 0;
+    left: 0;
+    border-radius: 50%;
+    z-index: 9998;
+    pointer-events: none;
+    will-change: transform;
+}
+
+/* Scroll Progress Bar */
+.scroll-progress-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 3px;
+    background: linear-gradient(to right, #06b6d4, #3b82f6, #8b5cf6);
+    z-index: 100;
+}
+
+/* Loader Screen */
+.loading-screen {
+    position: fixed;
+    inset: 0;
+    background-color: #0b0f19;
+    z-index: 99999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.8s ease, visibility 0.8s ease;
+}
+
+.loader-spinner {
+    width: 50px;
+    height: 50px;
+    border: 3px solid rgba(6, 182, 212, 0.1);
+    border-top-color: #06b6d4;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    box-shadow: 0 0 15px rgba(6, 182, 212, 0.2);
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* Micro floating animation */
+.float-animation {
+    animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-12px); }
+    100% { transform: translateY(0px); }
+}
+
+/* Glassmorphism utility (Optimized: removed blur to prevent paint lag on scroll) */
+.backdrop-blur-md {
+    /* Backdrop blur filter removed to maintain high-performance scrolling */
+}
+
+/* Sticky Navbar Active State */
+.navbar-scrolled {
+    background-color: rgba(11, 15, 25, 0.92) !important;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+/* Active Link Indicator */
+.nav-link {
+    position: relative;
+}
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0%;
+    height: 2px;
+    background-color: #22d3ee;
+    transition: width 0.3s;
+}
+.nav-link:hover::after,
+.nav-link.active::after {
+    width: 100%;
+}
+
+/* Skill Bar Fills */
+.skill-progress-bar {
+    transition: width 1.5s cubic-bezier(0.1, 0.8, 0.3, 1);
+}
+
+/* Pagination Overrides */
+.pagination {
+    display: flex;
+    justify-content: center;
+    gap: 4px;
+    font-size: 14px;
+}
+.pagination li a, 
+.pagination li span {
+    padding: 8px 14px;
+    border-radius: 8px;
+    border: 1px solid #1f2937;
+    background-color: #0b0f19;
+    color: #9ca3af;
+    transition: all 0.3s;
+}
+.pagination li.active span {
+    background-color: #06b6d4;
+    color: #000;
+    border-color: #06b6d4;
+}
+.pagination li a:hover {
+    border-color: #06b6d4;
+    color: #06b6d4;
+}
+
+/* Card Tilt and Border Hover Glows */
+.project-item, .service-card, .comment-item {
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Mobile Nav Link */
+.mobile-nav-link {
+    font-weight: 800;
+    letter-spacing: 0.05em;
+}
+
+/* Form floating label logic */
+.peer:focus ~ label,
+.peer:not(:placeholder-shown) ~ label {
+    transform: translateY(-1.5rem) scale(0.75);
+    color: #22d3ee;
+}
