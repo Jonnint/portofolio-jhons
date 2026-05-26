@@ -27,7 +27,7 @@ class PortfolioController extends Controller
         $portfolios = Portfolio::orderBy('featured', 'desc')->orderBy('created_at', 'desc')->get();
         $galleries = Gallery::orderBy('created_at', 'desc')->get();
         $socials = Social::where('is_active', true)->get();
-        $comments = Guestbook::where('is_approved', true)->orderBy('created_at', 'desc')->paginate(5);
+        $comments = Guestbook::orderBy('created_at', 'desc')->paginate(5);
 
         return view('home', compact('profile', 'skills', 'portfolios', 'galleries', 'socials', 'comments'));
     }

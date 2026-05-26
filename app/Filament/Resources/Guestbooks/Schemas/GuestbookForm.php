@@ -4,7 +4,6 @@ namespace App\Filament\Resources\Guestbooks\Schemas;
 
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Textarea;
-use Filament\Forms\Components\Toggle;
 use Filament\Schemas\Schema;
 
 class GuestbookForm
@@ -21,8 +20,6 @@ class GuestbookForm
                 \Filament\Forms\Components\FileUpload::make('photo')
                     ->image()
                     ->default(null),
-                Toggle::make('is_approved')
-                    ->required(),
             ]);
     }
 }

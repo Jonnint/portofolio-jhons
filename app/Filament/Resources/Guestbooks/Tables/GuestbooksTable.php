@@ -18,9 +18,6 @@ class GuestbooksTable
                 TextColumn::make('name')
                     ->searchable(),
                 \Filament\Tables\Columns\ImageColumn::make('photo'),
-                IconColumn::make('is_approved')
-                    ->boolean()
-                    ->sortable(),
                 TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable(),

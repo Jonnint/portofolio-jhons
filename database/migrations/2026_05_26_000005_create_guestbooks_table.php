@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('name');
             $table->text('message');
             $table->string('photo')->nullable(); // Path to user uploaded avatar
-            $table->boolean('is_approved')->default(false); // Admin moderation
+            $table->boolean('is_approved')->default(true); // Auto-approved
             $table->timestamps();
         });
     }
