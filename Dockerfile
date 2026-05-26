@@ -1,7 +1,7 @@
 # ==========================================
 # Stage 1: Compile Frontend Assets
 # ==========================================
-FROM node:18-alpine AS assets-builder
+FROM node:20-alpine AS assets-builder
 WORKDIR /app
 
 # Install dependencies
