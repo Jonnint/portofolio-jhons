@@ -29,24 +29,6 @@ class GuestbooksTable
                 //
             ])
             ->recordActions([
-                \Filament\Tables\Actions\Action::make('approve')
-                    ->label('Approve')
-                    ->action(function (\App\Models\Guestbook $record) {
-                        $record->update(['is_approved' => true]);
-                    })
-                    ->color('success')
-                    ->icon('heroicon-o-check')
-                    ->requiresConfirmation()
-                    ->hidden(fn (\App\Models\Guestbook $record) => $record->is_approved),
-                \Filament\Tables\Actions\Action::make('reject')
-                    ->label('Reject')
-                    ->action(function (\App\Models\Guestbook $record) {
-                        $record->update(['is_approved' => false]);
-                    })
-                    ->color('danger')
-                    ->icon('heroicon-o-x-mark')
-                    ->requiresConfirmation()
-                    ->visible(fn (\App\Models\Guestbook $record) => $record->is_approved),
                 EditAction::make(),
             ])
             ->toolbarActions([
