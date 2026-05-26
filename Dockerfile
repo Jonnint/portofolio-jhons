@@ -27,17 +27,17 @@ ENV AUTORUN_ENABLED=true
 RUN install-php-extensions intl
 
 # Switch back to the default secure webuser
-USER webuser
+USER www-data
 
 # Copy application code with correct owner permissions
-COPY --chown=webuser:webgroup . /var/www/html
+COPY --chown=www-data:www-data . /var/www/html
 
 # Copy Vite-compiled static assets from Stage 1
-COPY --chown=webuser:webgroup --from=assets-builder /app/public/build /var/www/html/public/build
+COPY --chown=www-data:www-data --from=assets-builder /app/public/build /var/www/html/public/build
 
 # Install PHP production dependencies using Composer
 RUN composer install --no-dev --optimize-autoloader
 
 # Register startup script to run migrations and cache on deploy
-COPY --chown=webuser:webgroup docker/startup.sh /etc/entrypoint.d/startup.sh
+COPY --chown=www-data:www-data docker/startup.sh /etc/entrypoint.d/startup.sh
 RUN chmod +x /etc/entrypoint.d/startup.sh
