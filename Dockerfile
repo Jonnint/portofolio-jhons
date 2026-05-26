@@ -15,7 +15,7 @@ RUN npm run build
 # ==========================================
 # Stage 2: Production Web Server
 # ==========================================
-FROM serversideup/php:8.2-fpm-nginx
+FROM serversideup/php:8.4-fpm-nginx
 
 # Switch to root user to install system dependencies
 USER root
