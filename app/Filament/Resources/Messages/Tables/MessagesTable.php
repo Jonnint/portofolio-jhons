@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources\Messages\Tables;
 
+use Filament\Tables\Actions\Action;
 use Filament\Tables\Actions\BulkActionGroup;
 use Filament\Tables\Actions\DeleteBulkAction;
 use Filament\Tables\Actions\EditAction;
@@ -37,7 +38,7 @@ class MessagesTable
                 //
             ])
             ->recordActions([
-                \Filament\Actions\Action::make('markAsRead')
+                Action::make('markAsRead')
                     ->action(fn (\App\Models\Message $record) => $record->update(['is_read' => true]))
                     ->color('success')
                     ->icon('heroicon-o-envelope-open')

@@ -529,9 +529,33 @@
                         </div>
 
                         <!-- Pagination -->
-                        <div class="mt-6 sm:mt-8">
-                            {{ $comments->fragment('guestbook')->links() }}
+                        @if($comments->hasPages())
+                        <div class="mt-6 sm:mt-8 flex items-center justify-between">
+                            @if($comments->onFirstPage())
+                                <span class="px-6 py-2 rounded-full text-xs font-bold uppercase tracking-wider text-gray-600 border border-gray-800 bg-gray-900/20 cursor-not-allowed">
+                                    ← Previous
+                                </span>
+                            @else
+                                <a href="{{ $comments->previousPageUrl() }}#guestbook" class="px-6 py-2 rounded-full text-xs font-bold uppercase tracking-wider text-white border border-gray-700 hover:border-cyan-400 hover:text-cyan-400 hover:bg-cyan-500/5 transition-all duration-300">
+                                    ← Previous
+                                </a>
+                            @endif
+
+                            <span class="text-xs text-gray-500 font-mono">
+                                Showing {{ $comments->firstItem() }} to {{ $comments->lastItem() }} of {{ $comments->total() }} results
+                            </span>
+
+                            @if($comments->hasMorePages())
+                                <a href="{{ $comments->nextPageUrl() }}#guestbook" class="px-6 py-2 rounded-full text-xs font-bold uppercase tracking-wider text-white border border-gray-700 hover:border-cyan-400 hover:text-cyan-400 hover:bg-cyan-500/5 transition-all duration-300">
+                                    Next →
+                                </a>
+                            @else
+                                <span class="px-6 py-2 rounded-full text-xs font-bold uppercase tracking-wider text-gray-600 border border-gray-800 bg-gray-900/20 cursor-not-allowed">
+                                    Next →
+                                </span>
+                            @endif
                         </div>
+                        @endif
                     </div>
 
                     <!-- Comment Form -->

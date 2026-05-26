@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources\Guestbooks\Tables;
 
+use Filament\Tables\Actions\Action;
 use Filament\Tables\Actions\BulkActionGroup;
 use Filament\Tables\Actions\DeleteBulkAction;
 use Filament\Tables\Actions\EditAction;
@@ -29,13 +30,13 @@ class GuestbooksTable
                 //
             ])
             ->recordActions([
-                \Filament\Actions\Action::make('approve')
+                Action::make('approve')
                     ->action(fn (\App\Models\Guestbook $record) => $record->update(['is_approved' => true]))
                     ->color('success')
                     ->icon('heroicon-o-check')
                     ->requiresConfirmation()
                     ->hidden(fn (\App\Models\Guestbook $record) => $record->is_approved),
-                \Filament\Actions\Action::make('reject')
+                Action::make('reject')
                     ->action(fn (\App\Models\Guestbook $record) => $record->update(['is_approved' => false]))
                     ->color('danger')
                     ->icon('heroicon-o-x-mark')
