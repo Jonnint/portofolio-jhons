@@ -20,6 +20,9 @@ FROM serversideup/php:8.2-fpm-nginx
 # Enable custom container startup scripts
 ENV AUTORUN_ENABLED=true
 
+# Install required PHP extensions for Filament v3
+RUN install-php-extensions intl
+
 # Copy application code with correct owner permissions
 COPY --chown=webuser:webgroup . /var/www/html
 
