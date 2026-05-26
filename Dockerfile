@@ -17,11 +17,17 @@ RUN npm run build
 # ==========================================
 FROM serversideup/php:8.2-fpm-nginx
 
+# Switch to root user to install system dependencies
+USER root
+
 # Enable custom container startup scripts
 ENV AUTORUN_ENABLED=true
 
 # Install required PHP extensions for Filament v3
 RUN install-php-extensions intl
+
+# Switch back to the default secure webuser
+USER webuser
 
 # Copy application code with correct owner permissions
 COPY --chown=webuser:webgroup . /var/www/html
