@@ -29,7 +29,7 @@ class GuestbooksTable
                 //
             ])
             ->actions([
-                EditAction::make(),
+                // EditAction::make(),
             ])
             ->toolbarActions([
                 BulkActionGroup::make([
