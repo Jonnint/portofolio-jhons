@@ -37,7 +37,7 @@ class MessagesTable
                 //
             ])
             ->recordActions([
-                \Filament\Tables\Actions\Action::make('markAsRead')
+                \Filament\Actions\Action::make('markAsRead')
                     ->action(fn (\App\Models\Message $record) => $record->update(['is_read' => true]))
                     ->color('success')
                     ->icon('heroicon-o-envelope-open')

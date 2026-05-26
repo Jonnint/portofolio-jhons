@@ -29,13 +29,13 @@ class GuestbooksTable
                 //
             ])
             ->recordActions([
-                \Filament\Tables\Actions\Action::make('approve')
+                \Filament\Actions\Action::make('approve')
                     ->action(fn (\App\Models\Guestbook $record) => $record->update(['is_approved' => true]))
                     ->color('success')
                     ->icon('heroicon-o-check')
                     ->requiresConfirmation()
                     ->hidden(fn (\App\Models\Guestbook $record) => $record->is_approved),
-                \Filament\Tables\Actions\Action::make('reject')
+                \Filament\Actions\Action::make('reject')
                     ->action(fn (\App\Models\Guestbook $record) => $record->update(['is_approved' => false]))
                     ->color('danger')
                     ->icon('heroicon-o-x-mark')
