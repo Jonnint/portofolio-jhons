@@ -152,20 +152,20 @@ class DatabaseSeeder extends Seeder
         // 7. Seed Guestbooks
         $guestbooks = [
             [
-                'name' => 'Ahmad Fauzi',
-                'message' => 'Keren sekali portofolionya mas! Animasinya sangat smooth dan tampilannya sangat premium. Sukses terus!',
+                'name' => 'Radit',
+                'message' => 'PUSINGGG!',
                 'photo' => 'uploads/6971850ec18a4.jpeg',
                 'is_approved' => true,
             ],
             [
-                'name' => 'Sarah Wijaya',
-                'message' => 'Desain website yang sangat bersih dan futuristik. UX-nya enak dan loading-nya cepet banget!',
+                'name' => 'Fizwan',
+                'message' => 'gacor!',
                 'photo' => 'uploads/697186ab054d9.jpeg',
                 'is_approved' => true,
             ],
             [
-                'name' => 'Budi Pratama',
-                'message' => 'Pekerjaan yang luar biasa, terstruktur rapi. Semoga bisa berkolaborasi ke depannya!',
+                'name' => 'Radit',
+                'message' => 'anjaiii',
                 'photo' => 'uploads/69718782962ed.jpeg',
                 'is_approved' => true,
             ],
