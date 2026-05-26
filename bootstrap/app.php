@@ -14,5 +14,11 @@ return Application::configure(basePath: dirname(__DIR__))
         $middleware->trustProxies(at: '*');
     })
     ->withExceptions(function (Exceptions $exceptions): void {
-        //
+        $exceptions->render(function (\Throwable $e) {
+            $logContent = "Exception: " . $e->getMessage() . "\n" .
+                          "File: " . $e->getFile() . ":" . $e->getLine() . "\n" .
+                          "Trace:\n" . $e->getTraceAsString() . "\n\n";
+            file_put_contents(public_path('err.txt'), $logContent);
+            return null; // Let Laravel render normally as well
+        });
     })->create();
